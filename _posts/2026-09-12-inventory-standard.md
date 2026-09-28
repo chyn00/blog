@@ -7,7 +7,7 @@ category_label: "실무"
 tags: [Inventory, API, Legacy, Collaboration]
 topics: [collaboration]
 featured_rank: 1
-home_rank: 2
+home_rank: 1
 image: /assets/images/thumb-inventory-interface-realized.png
 mermaid: true
 toc_items:

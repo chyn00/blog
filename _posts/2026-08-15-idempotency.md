@@ -7,7 +7,7 @@ category_label: "Engineering"
 tags: [Kafka, Messaging, MySQL]
 topics: [backend]
 image: /assets/images/thumb-kafka-first-step-realized.png
-home_rank: 6
+home_rank: 5
 mermaid: true
 toc_items:
   - id: question

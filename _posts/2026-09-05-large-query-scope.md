@@ -7,7 +7,7 @@ category_label: "실무"
 tags: [Oracle, Query, Partition]
 topics: [database]
 featured_rank: 3
-home_rank: 5
+home_rank: 4
 image: /assets/images/thumb-compound-index-realized.png
 mermaid: true
 toc_items:
