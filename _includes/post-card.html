@@ -1,0 +1,15 @@
+{% assign post = include.post %}
+{% assign category_name = post.categories | first %}
+{% assign category_label = post.category_label | default: category_name %}
+<article class="post-card post-card--{{ category_name | slugify }}">
+  <a class="post-card__link" href="{{ post.url | relative_url }}" aria-label="{{ post.title }} 읽기">
+    <div class="post-card__body">
+      <div class="post-card__meta">
+        <span>{{ category_label }}</span>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+      </div>
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.description | default: post.excerpt | strip_html | strip_newlines | truncate: 105 }}</p>
+    </div>
+  </a>
+</article>

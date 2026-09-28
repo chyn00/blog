@@ -1,0 +1,36 @@
+- key: production
+  label: 실무
+  path: /categories/production/
+  topics:
+    - key: collaboration
+      label: 협업
+      path: /categories/production/collaboration/
+    - key: concurrency
+      label: 동시성
+      path: /categories/production/concurrency/
+    - key: database
+      label: Database
+      path: /categories/production/database/
+- key: product
+  label: 0→1 실제 운영 서비스
+  path: /categories/product/
+  topics:
+    - key: service-design
+      label: 서비스 설계
+      path: /categories/product/service-design/
+    - key: ci-cd
+      label: CI/CD
+      path: /categories/product/ci-cd/
+    - key: observability
+      label: Observability
+      path: /categories/product/observability/
+- key: engineering
+  label: Engineering
+  path: /categories/engineering/
+  topics:
+    - key: backend
+      label: Backend
+      path: /categories/engineering/backend/
+    - key: ai-engineering
+      label: AI Engineering
+      path: /categories/engineering/ai-engineering/

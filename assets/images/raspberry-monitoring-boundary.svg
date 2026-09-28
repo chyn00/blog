@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">서버 밖으로 분리된 모니터링 알림</title>
+  <desc id="desc">운영 서버와 분리된 Raspberry Pi가 상태를 확인하고 알림을 보내는 장면</desc>
+  <rect width="1600" height="900" fill="#f3f5f4"/>
+
+  <rect x="120" y="170" width="390" height="560" rx="34" fill="#ffffff" stroke="#d9dedd" stroke-width="5"/>
+  <rect x="185" y="245" width="260" height="105" rx="16" fill="#315dc6"/>
+  <rect x="185" y="395" width="260" height="105" rx="16" fill="#315dc6"/>
+  <rect x="185" y="545" width="260" height="105" rx="16" fill="#315dc6"/>
+  <g fill="#ffffff">
+    <circle cx="230" cy="297" r="13"/>
+    <circle cx="230" cy="447" r="13"/>
+    <circle cx="230" cy="597" r="13"/>
+  </g>
+  <g stroke="#ffffff" stroke-width="12" stroke-linecap="round">
+    <path d="M275 297h115"/>
+    <path d="M275 447h115"/>
+    <path d="M275 597h115"/>
+  </g>
+
+  <path d="M555 450h170" stroke="#1d2421" stroke-width="14" stroke-linecap="round" stroke-dasharray="20 22"/>
+  <path d="M690 412l48 38-48 38" fill="none" stroke="#1d2421" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="770" y="225" width="420" height="450" rx="54" fill="#176b52"/>
+  <circle cx="820" cy="275" r="13" fill="#bce0d2"/>
+  <circle cx="1138" cy="275" r="13" fill="#bce0d2"/>
+  <circle cx="820" cy="625" r="13" fill="#bce0d2"/>
+  <circle cx="1138" cy="625" r="13" fill="#bce0d2"/>
+  <path d="M855 450c70-112 180-112 250 0-70 112-180 112-250 0z" fill="#ffffff"/>
+  <circle cx="980" cy="450" r="62" fill="#176b52"/>
+  <circle cx="980" cy="450" r="25" fill="#ffffff"/>
+
+  <path d="M1230 450h95" stroke="#c5543d" stroke-width="14" stroke-linecap="round"/>
+  <path d="M1290 412l48 38-48 38" fill="none" stroke="#c5543d" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <path d="M1375 300c0-42 34-76 76-76s76 34 76 76v142l45 72h-242l45-72z" fill="#c5543d"/>
+  <circle cx="1451" cy="570" r="34" fill="#c5543d"/>
+  <circle cx="1451" cy="370" r="31" fill="#ffffff"/>
+  <rect x="1438" y="415" width="26" height="62" rx="13" fill="#ffffff"/>
+</svg>

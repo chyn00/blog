@@ -1,0 +1,16 @@
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} 홈">{{ site.title }}</a>
+    <nav class="site-nav" aria-label="주요 메뉴">
+      <a href="{{ '/about/' | relative_url }}">About</a>
+      <a href="{{ '/categories/production/' | relative_url }}">실무</a>
+      <a href="{{ '/categories/product/' | relative_url }}">0→1 실제 운영 서비스</a>
+      <a href="{{ '/categories/engineering/' | relative_url }}">Engineering</a>
+      {% if site.github_username != '' %}
+        <a href="https://github.com/{{ site.github_username }}" rel="me noopener">GitHub<span class="sr-only"> (새 창)</span></a>
+      {% else %}
+        <span class="site-nav__pending" title="_config.yml에 GitHub 사용자명을 입력하면 활성화됩니다">GitHub</span>
+      {% endif %}
+    </nav>
+  </div>
+</header>

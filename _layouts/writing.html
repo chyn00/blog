@@ -1,0 +1,50 @@
+---
+layout: default
+---
+<section class="archive-shell content-browser">
+  {% include writing-track-nav.html %}
+  <div class="content-browser__main">
+    <header class="archive-header archive-header--compact">
+      <p class="eyebrow">All writing</p>
+      <h1>{{ page.title }}</h1>
+      <p>{{ page.description }}</p>
+    </header>
+    {% assign priority_first = site.posts | where_exp: 'post', 'post.home_rank == 1' %}
+    {% assign priority_second = site.posts | where_exp: 'post', 'post.home_rank == 2' %}
+    {% assign priority_posts = priority_first | concat: priority_second %}
+    {% assign without_first = site.posts | where_exp: 'post', 'post.home_rank != 1' %}
+    {% assign remaining_posts = without_first | where_exp: 'post', 'post.home_rank != 2' %}
+    {% assign ordered_posts = priority_posts | concat: remaining_posts %}
+    <div class="post-grid{% if page.remaining_count < 3 %} post-grid--sparse{% endif %}">
+      {% for post in ordered_posts limit: 6 offset: page.post_offset %}
+        {% include post-card.html post=post %}
+      {% endfor %}
+    </div>
+    <nav class="pagination" aria-label="전체 글 페이지">
+      {% if page.previous_page %}
+        <a class="pagination__control" href="{{ page.previous_page | relative_url }}">← 이전</a>
+      {% else %}
+        <span class="pagination__control is-disabled" aria-hidden="true">← 이전</span>
+      {% endif %}
+      <span class="pagination__pages">
+        {% for number in (1..page.total_pages) %}
+          {% if number == 1 %}
+            {% assign number_path = '/writing/' %}
+          {% else %}
+            {% assign number_path = '/writing/page' | append: number | append: '/' %}
+          {% endif %}
+          {% if number == page.page_number %}
+            <span class="pagination__number is-current" aria-current="page">{{ number }}</span>
+          {% else %}
+            <a class="pagination__number" href="{{ number_path | relative_url }}" aria-label="{{ number }}페이지로 이동">{{ number }}</a>
+          {% endif %}
+        {% endfor %}
+      </span>
+      {% if page.next_page %}
+        <a class="pagination__control" href="{{ page.next_page | relative_url }}">다음 →</a>
+      {% else %}
+        <span class="pagination__control is-disabled" aria-hidden="true">다음 →</span>
+      {% endif %}
+    </nav>
+  </div>
+</section>

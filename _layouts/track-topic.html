@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<section class="archive-shell content-browser">
+  {% include writing-track-nav.html %}
+  <div class="content-browser__main">
+    <header class="archive-header">
+      <p class="eyebrow">{{ page.track_label }}</p>
+      <h1>{{ page.title }}</h1>
+      <p>{{ page.description }}</p>
+    </header>
+    <div class="post-grid">
+      {% for post in site.categories[page.category] %}
+        {% if post.topics contains page.topic %}
+          {% include post-card.html post=post %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

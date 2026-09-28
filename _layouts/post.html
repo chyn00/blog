@@ -1,0 +1,37 @@
+---
+layout: default
+---
+<article class="article-shell">
+  {% assign category_name = page.categories | first %}
+  {% assign category_label = page.category_label | default: category_name %}
+  <header class="article-header">
+    <div class="article-header__meta">
+      <span>{{ category_label }}</span>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y년 %-m월 %-d일" }}</time>
+      {% if page.sample %}<span class="sample-label">Preview article</span>{% endif %}
+    </div>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p class="article-header__description">{{ page.description }}</p>{% endif %}
+    {% if page.tags.size > 0 %}
+      <ul class="tag-list" aria-label="태그">{% for tag in page.tags %}<li>{{ tag }}</li>{% endfor %}</ul>
+    {% endif %}
+  </header>
+
+  <div class="article-layout{% unless page.toc and page.toc_items %} article-layout--without-toc{% endunless %}">
+    {% if page.toc and page.toc_items %}
+    <nav class="toc" aria-labelledby="toc-title">
+      <h2 id="toc-title">이 글에서 다루는 내용</h2>
+      <ol>{% for item in page.toc_items %}<li><a href="#{{ item.id }}">{{ item.title }}</a></li>{% endfor %}</ol>
+    </nav>
+    {% endif %}
+
+    <div class="article-main">
+      <div class="prose">{{ content }}</div>
+
+      <nav class="post-nav" aria-label="이전 및 다음 글">
+        {% if page.previous %}<a href="{{ page.previous.url | relative_url }}"><span>이전 글</span><strong>{{ page.previous.title }}</strong></a>{% endif %}
+        {% if page.next %}<a href="{{ page.next.url | relative_url }}"><span>다음 글</span><strong>{{ page.next.title }}</strong></a>{% endif %}
+      </nav>
+    </div>
+  </div>
+</article>

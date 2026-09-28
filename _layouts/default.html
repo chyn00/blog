@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'ko-KR' }}">
+  <head>{% include head.html %}</head>
+  <body class="layout-{{ page.layout | default: 'default' }}">
+    <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
+    {% include header.html %}
+    <main id="main-content">{{ content }}</main>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>© {{ 'now' | date: '%Y' }} chyn00. All rights reserved. · <a href="{{ '/copyright/' | relative_url }}">Copyright</a> · <a href="https://github.com/{{ site.github_username }}" rel="me noopener">GitHub</a></p>
+      </div>
+    </footer>
+    {% if page.mermaid %}
+      <script type="module" src="{{ '/assets/js/mermaid-init.js' | relative_url }}"></script>
+    {% endif %}
+  </body>
+</html>

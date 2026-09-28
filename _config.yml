@@ -1,0 +1,40 @@
+title: "Ted's Engineering Blog"
+description: "현실의 문제를 운영 가능한 시스템으로 만들고, 배포·모니터링·개선까지 연결하는 백엔드 개발자의 기록"
+lang: ko-KR
+url: "https://chyn00.github.io"
+baseurl: "/blog"
+github_username: "chyn00"
+author:
+  name: "Ted"
+
+permalink: /:categories/:title/
+timezone: Asia/Seoul
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      image: ""
+      mermaid: false
+      toc: true
+
+exclude:
+  - AGENTS.md
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - docs
+  - vendor

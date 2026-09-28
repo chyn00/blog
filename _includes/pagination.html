@@ -1,0 +1,16 @@
+{% if paginator.total_pages > 1 %}
+<nav class="pagination" aria-label="글 목록 페이지">
+  {% if paginator.previous_page %}
+    <a class="pagination__control" href="{{ paginator.previous_page_path | relative_url }}" rel="prev">← 이전</a>
+  {% else %}
+    <span class="pagination__control is-disabled" aria-disabled="true">← 이전</span>
+  {% endif %}
+  <span class="pagination__status"><strong>{{ paginator.page }}</strong> / {{ paginator.total_pages }}</span>
+  {% if paginator.next_page %}
+    <a class="pagination__control" href="{{ paginator.next_page_path | relative_url }}" rel="next">다음 →</a>
+  {% else %}
+    <span class="pagination__control is-disabled" aria-disabled="true">다음 →</span>
+  {% endif %}
+</nav>
+{% endif %}
+

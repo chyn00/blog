@@ -1,0 +1,22 @@
+<nav class="topic-nav" aria-label="글 분류">
+  <div class="topic-nav__header">
+    <p class="topic-nav__eyebrow">Writing</p>
+    <h2>글 분류</h2>
+  </div>
+  <a class="topic-nav__all{% if page.layout == 'writing' %} is-active{% endif %}"{% if page.layout == 'writing' %} aria-current="page"{% endif %} href="{{ '/writing/' | relative_url }}">
+    <span>전체 글</span>
+    <span aria-hidden="true">→</span>
+  </a>
+  <div class="track-nav__groups">
+    {% for track in site.data.writing_tracks %}
+      <section class="track-nav__group{% if page.category == track.key %} is-current{% endif %}">
+        <a class="track-nav__track{% if page.category == track.key and page.topic == nil %} is-active{% endif %}"{% if page.category == track.key and page.topic == nil %} aria-current="page"{% endif %} href="{{ track.path | relative_url }}">{{ track.label }}</a>
+        <div class="track-nav__topics">
+          {% for topic in track.topics %}
+            <a{% if page.category == track.key and page.topic == topic.key %} class="is-active" aria-current="page"{% endif %} href="{{ topic.path | relative_url }}">{{ topic.label }}</a>
+          {% endfor %}
+        </div>
+      </section>
+    {% endfor %}
+  </div>
+</nav>

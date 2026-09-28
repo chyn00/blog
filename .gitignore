@@ -1,0 +1,20 @@
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+vendor/
+Gemfile.lock
+.bundle/
+.serena/
+.codex/
+AGENTS.md
+docs/
+
+# Locally preserved assets for unpublished articles
+assets/images/grafana-ssh-tunnel.svg
+assets/images/thumb-grafana-tunnel-*.png
+assets/images/thumb-grafana-tunnel.svg
+assets/images/sse-boundary-v2.svg
+assets/images/sse-boundary.jpg
+assets/images/thumb-sse-*.png
+assets/images/thumb-sse.svg
