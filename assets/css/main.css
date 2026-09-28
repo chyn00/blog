@@ -173,6 +173,7 @@ button, input, textarea { font: inherit; }
 .toc a:hover { color: var(--accent); }
 
 .prose { color: #202321; font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", "Segoe UI", sans-serif; line-height: 1.8; }
+.prose a.monitoring-link { color: #b42318; font-weight: 700; text-decoration-color: currentColor; }
 .prose h2, .prose h3, .prose h4 { font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", sans-serif; letter-spacing: -.035em; word-break: keep-all; scroll-margin-top: 24px; }
 .prose h2 { margin: 2.35em 0 .68em; padding-top: .18em; font-size: 1.5rem; line-height: 1.36; font-weight: 720; }
 .prose h3 { margin: 1.8em 0 .58em; font-size: 1.2rem; line-height: 1.42; font-weight: 720; }
@@ -231,6 +232,12 @@ button, input, textarea { font: inherit; }
 .prose .article-visual__frame--dashboard { aspect-ratio: auto; }
 .prose .article-visual img { display: block; width: 100%; margin: 0; border: 0; border-radius: 0; }
 .prose .article-visual figcaption { margin-top: 10px; color: var(--muted); font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif; font-size: .76rem; line-height: 1.6; }
+.prose .article-image-zoom { display: block; cursor: zoom-in; }
+.prose .article-image-lightbox { display: none; }
+.prose .article-image-lightbox:target { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 48px 16px 24px; background: rgba(12, 17, 15, .94); }
+.prose .article-image-lightbox img { display: block; width: auto; max-width: 100%; max-height: calc(100dvh - 120px); object-fit: contain; }
+.prose .article-image-lightbox__close { position: absolute; top: 12px; right: 20px; color: #fff; font-size: 2rem; line-height: 1; text-decoration: none; }
+.prose .article-image-lightbox__original { color: #fff; font-size: .82rem; }
 
 .post-nav { margin-top: 78px; padding-top: 28px; border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 .post-nav a { display: flex; flex-direction: column; gap: 5px; text-decoration: none; }

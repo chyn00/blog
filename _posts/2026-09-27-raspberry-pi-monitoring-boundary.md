@@ -7,7 +7,7 @@ category_label: "0→1 실제 운영 서비스"
 tags: [Raspberry Pi, Grafana, Prometheus, SSH, Slack]
 topics: [observability]
 featured_rank: 4
-home_rank: 3
+home_rank: 4
 image: /assets/images/thumb-raspberry-monitoring-realized.png
 permalink: /product/raspberry-pi-monitoring-boundary/
 mermaid: true
