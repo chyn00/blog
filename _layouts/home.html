@@ -9,23 +9,20 @@ layout: default
   </div>
 </section>
 
-<section class="post-index content-browser" aria-labelledby="latest-posts">
-  {% include writing-track-nav.html %}
-  <div class="content-browser__main">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Selected writing</p>
-        <h2 id="latest-posts">주요 글</h2>
-      </div>
+<section class="post-index" aria-labelledby="latest-posts">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Selected writing</p>
+      <h2 id="latest-posts">주요 글</h2>
     </div>
-    {% assign home_posts = site.posts | where_exp: 'post', 'post.home_rank' | sort: 'home_rank' %}
-    <div class="post-grid">
-      {% for post in home_posts limit: 4 %}
-        {% assign card_loading = 'lazy' %}
-        {% if forloop.index <= 3 %}{% assign card_loading = 'eager' %}{% endif %}
-        {% include post-card.html post=post loading=card_loading %}
-      {% endfor %}
-    </div>
-    <div class="index-more"><a href="{{ '/writing/' | relative_url }}">전체 글 보기 <span aria-hidden="true">→</span></a></div>
   </div>
+  {% assign home_posts = site.posts | where_exp: 'post', 'post.home_rank' | sort: 'home_rank' %}
+  <div class="post-grid">
+    {% for post in home_posts limit: 4 %}
+      {% assign card_loading = 'lazy' %}
+      {% if forloop.index <= 3 %}{% assign card_loading = 'eager' %}{% endif %}
+      {% include post-card.html post=post loading=card_loading %}
+    {% endfor %}
+  </div>
+  <div class="index-more"><a href="{{ '/writing/' | relative_url }}">전체 글 보기 <span aria-hidden="true">→</span></a></div>
 </section>
