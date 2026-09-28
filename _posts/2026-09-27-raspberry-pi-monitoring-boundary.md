@@ -1,7 +1,7 @@
 ---
 title: "자원의 한계 속에서 최소한의 운영 모니터링을 구축한 이야기"
 date: 2026-09-27 02:00:00 +0900
-description: "기존 Prometheus와 Raspberry Pi를 연결해 운영 서비스 밖에 Alert 평가 경로를 만들고, 실제 Slow API 신호를 받기까지의 과정"
+description: "기존 Prometheus와 Raspberry Pi를 연결해 운영 서비스 밖에 Alert 경로를 만들고, 실제 Slow API 신호를 받기까지의 과정"
 categories: [product]
 category_label: "0→1 실제 운영 서비스"
 tags: [Raspberry Pi, Grafana, Prometheus, SSH, Slack]
@@ -27,17 +27,17 @@ toc_items:
     title: "남은 경계"
 ---
 
-1인 개발로 운영하는 서비스라 NCP 운영 서버도 최소 사양으로 시작했습니다. 이 서버에는 Spring Boot 애플리케이션과 Prometheus가 함께 있었습니다. 현재 구성만으로는 운영할 여유가 있었지만, Grafana와 Alert 평가까지 같은 서버에 상시 실행해 그 여유를 쓰고 싶지는 않았습니다.
+1인 개발로 운영하는 서비스라 NCP 운영 서버도 1GB RAM의 최소 사양으로 시작했습니다. 이 서버에는 Spring Boot 애플리케이션과 Prometheus가 함께 있었습니다. 평소 요청을 처리할 때와 달리 Docker로 배포할 때는 메모리 여유가 빠듯했습니다. Grafana와 Alert까지 같은 서버에서 상시 운영하면 그 부담이 더 커질 수 있다고 판단했습니다.
 
-별도 모니터링 서버를 추가하는 대신, 보유하고 있던 Raspberry Pi 3 B+에 Grafana를 설치했습니다. 기존 Prometheus의 수집·저장 구조는 유지하고, 외부에서 조회하고 Alert를 평가하는 역할만 분리했습니다.
+별도 모니터링 서버를 추가하는 대신, 보유하고 있던 Raspberry Pi 3 B+에 Grafana를 설치했습니다. 기존 Prometheus의 수집·저장 구조는 유지하고, 외부에서 메트릭을 조회하고 Alert를 보내는 역할만 분리했습니다.
 
-> **판단 기준 / One Perspective** — 기존 Prometheus는 유지하고, Grafana와 Alert 평가만 보유한 장비로 옮겨 운영 서버의 자원을 서비스에 남긴다.
+> **판단 기준 / One Perspective** — 운영 서버의 상시 메모리 사용을 최소화하고, Grafana와 Alert는 보유한 장비에서 운영한다.
 
 ## 운영 서버의 자원 배분 {#problem}
 
-운영 서버는 애플리케이션과 Prometheus만으로도 필요한 메트릭을 수집하고 있었습니다. 여기에 Grafana까지 올리면 대시보드 조회와 Alert 평가에 쓰는 메모리·CPU도 같은 서버에서 부담해야 합니다. 지금 서버의 여유는 서비스 운영과 기능 개선을 위해 남겨두는 편이 낫다고 판단했습니다.
+운영 서버에서는 애플리케이션과 Prometheus로 필요한 메트릭을 수집하고 있었습니다. Grafana까지 올리면 대시보드 조회와 Alert에 쓰는 메모리도 그 서버가 상시 부담합니다. 배포 때 이미 메모리가 빠듯했던 만큼, Grafana를 더하는 대신 기존 Prometheus만 남기기로 했습니다.
 
-모니터링을 위해 별도 VM을 추가하면 비용도 늘어납니다. 그래서 이미 갖고 있던 Raspberry Pi에서 Grafana와 Alert 평가를 실행하고, 메트릭 저장은 운영 서버의 Prometheus를 재사용했습니다. 현재 운영 규모에서 필요한 모니터링을 유지하면서 추가 자원과 비용을 작게 만드는 선택이었습니다.
+모니터링을 위해 별도 VM을 추가하면 비용도 늘어납니다. 그래서 이미 갖고 있던 Raspberry Pi에서 Grafana와 Alert를 운영하고, 메트릭 저장은 운영 서버의 Prometheus를 재사용했습니다. 현재 운영 규모에서 필요한 모니터링을 유지하면서 추가 자원과 비용을 작게 만드는 선택이었습니다.
 
 ## 분리한 범위 {#architecture}
 
@@ -58,23 +58,23 @@ flowchart LR
 </div>
 
 - 운영 서버는 애플리케이션 메트릭의 수집과 보관을 계속 담당합니다.
-- Raspberry Pi는 Grafana 조회와 Alert 평가를 담당합니다.
+- Raspberry Pi는 Grafana 조회와 Alert를 담당합니다.
 - Prometheus와 Grafana는 공개 포트 대신 SSH 터널로 연결합니다.
 - 관리 화면은 로컬에서 필요할 때만 별도 SSH 터널로 접근합니다.
 
-이 구조는 Alert 평가 장비를 운영 서버와 분리하지만, 메트릭 원본은 여전히 운영 서버의 Prometheus에 둡니다. 따라서 운영 서버 전체의 상태를 독립적으로 판정하는 구조라기보다, Raspberry Pi에서 Prometheus를 조회할 수 있는지와 수집된 메트릭에 이상 신호가 있는지를 확인하는 구조입니다.
+이 구조는 Grafana를 운영 서버와 분리하지만, 메트릭 원본은 여전히 운영 서버의 Prometheus에 둡니다. 따라서 운영 서버 전체의 상태를 독립적으로 판정하는 구조라기보다, Raspberry Pi에서 Prometheus를 조회할 수 있는지와 수집된 메트릭에 이상 신호가 있는지를 확인하는 구조입니다.
 
 ## 제한된 환경의 챌린지 {#constraints}
 
 Raspberry Pi에는 GUI가 없는 OS와 Grafana만 설치했습니다. 대시보드는 다른 기기의 브라우저에서 확인하고, 메트릭 저장은 기존 Prometheus를 재사용했습니다. Docker나 별도의 Prometheus·Trace 저장소는 현재 목표에 필요하지 않아 추가하지 않았습니다.
 
-1인 개발이라 서비스 기능 개발과 운영 개선을 함께 진행해야 했습니다. 모니터링 구성까지 Dev·QA·운영 환경으로 각각 분리하기는 어려웠습니다. 관리 화면은 로컬에서 확인하되, Alert 평가는 상시 실행되는 Raspberry Pi에 두었습니다. 규칙은 저장된 메트릭의 조회 범위와 임계값을 바꿔 결과를 확인하고, Slack Contact Point 테스트와 실제 알림 수신으로 검증했습니다.
+1인 개발이라 서비스 기능 개발과 운영 개선을 함께 진행해야 했습니다. 모니터링 구성까지 Dev·QA·운영 환경으로 각각 분리하기는 어려웠습니다. 관리 화면은 로컬에서 확인하되, Alert 규칙은 상시 실행되는 Raspberry Pi의 Grafana에 두었습니다. 규칙은 저장된 메트릭의 조회 범위와 임계값을 바꿔 결과를 확인하고, Slack Contact Point 테스트와 실제 알림 수신으로 검증했습니다.
 
 구현에는 다음과 같은 챌린지가 있었습니다.
 
 - 1GB RAM 안에서 상시 실행할 구성요소를 제한할 것
 - 운영 서버의 Prometheus를 외부에 공개하지 않고 연결할 것
-- 로컬 관리 환경과 무관하게 Alert 평가와 Slack 전송을 유지할 것
+- 로컬 관리 환경과 무관하게 Alert 규칙과 Slack 전송을 유지할 것
 - 별도의 Dev·QA 모니터링 환경 없이 규칙과 알림 경로를 검증할 것
 - 조회 실패와 실제 API 지연을 서로 다른 신호로 구분할 것
 - Raspberry Pi 자체 장애까지 감지하는 구조로 과장하지 않을 것

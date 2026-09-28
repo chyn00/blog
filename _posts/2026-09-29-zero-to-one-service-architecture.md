@@ -30,20 +30,16 @@ toc_items:
 
 현재 구조를 요청·개발·운영 관점으로 그린 그림입니다. 사용자의 요청 경로와 별도로 배포·관측 경로를 표시했습니다.
 
-<figure class="article-visual">
+<figure id="architecture-image-full" class="article-visual article-visual--expandable">
   <div class="article-visual__frame">
     <a class="article-image-zoom" href="#architecture-image-full" aria-label="서비스 아키텍처 이미지 확대">
       <img src="{{ '/assets/images/zero-to-one-service-architecture.png' | relative_url }}" alt="개발 환경, 운영 환경, Jenkins 배포 경로를 나누어 그린 0→1 서비스 아키텍처" width="1567" height="832">
     </a>
   </div>
   <figcaption>현재 사용 중인 서비스 구조. 이미지를 누르면 확대해서 볼 수 있다.</figcaption>
+  <a class="article-image-zoom__close" href="#service" aria-label="확대 이미지 닫기">×</a>
+  <a class="article-image-zoom__original" href="{{ '/assets/images/zero-to-one-service-architecture.png' | relative_url }}" target="_blank" rel="noopener">원본 크기로 열기 ↗</a>
 </figure>
-
-<div id="architecture-image-full" class="article-image-lightbox">
-  <a class="article-image-lightbox__close" href="#service" aria-label="확대 이미지 닫기">×</a>
-  <img src="{{ '/assets/images/zero-to-one-service-architecture.png' | relative_url }}" alt="개발 환경, 운영 환경, Jenkins 배포 경로를 나누어 그린 0→1 서비스 아키텍처" width="1567" height="832">
-  <a class="article-image-lightbox__original" href="{{ '/assets/images/zero-to-one-service-architecture.png' | relative_url }}" target="_blank" rel="noopener">원본 크기로 열기 ↗</a>
-</div>
 
 운영 요청은 Cloudflare와 Nginx를 거쳐 두 웹과 공통 API에 닿습니다. PC와 모바일이 다른 화면을 갖더라도 업무 규칙을 두 서버에 복제하지 않았습니다. 사용 방식이 더 달라져 서로 다른 백엔드 계약이 실제로 필요해질 때 분리하면 됩니다. [설치형 프로그램에서 웹으로 옮긴 과정]({{ '/product/operating-service-boundaries/' | relative_url }})에는 이 선택의 출발점을 적었습니다.
 

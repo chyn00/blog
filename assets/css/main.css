@@ -233,11 +233,13 @@ button, input, textarea { font: inherit; }
 .prose .article-visual img { display: block; width: 100%; margin: 0; border: 0; border-radius: 0; }
 .prose .article-visual figcaption { margin-top: 10px; color: var(--muted); font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif; font-size: .76rem; line-height: 1.6; }
 .prose .article-image-zoom { display: block; cursor: zoom-in; }
-.prose .article-image-lightbox { display: none; }
-.prose .article-image-lightbox:target { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 48px 16px 24px; background: rgba(12, 17, 15, .94); }
-.prose .article-image-lightbox img { display: block; width: auto; max-width: 100%; max-height: calc(100dvh - 120px); object-fit: contain; }
-.prose .article-image-lightbox__close { position: absolute; top: 12px; right: 20px; color: #fff; font-size: 2rem; line-height: 1; text-decoration: none; }
-.prose .article-image-lightbox__original { color: #fff; font-size: .82rem; }
+.prose .article-image-zoom__close, .prose .article-image-zoom__original { display: none; }
+.prose .article-visual--expandable:target { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; margin: 0; padding: 48px 16px 24px; background: rgba(12, 17, 15, .94); }
+.prose .article-visual--expandable:target .article-visual__frame { width: min(100%, 1567px); border: 0; background: transparent; }
+.prose .article-visual--expandable:target img { width: auto; max-width: 100%; max-height: calc(100dvh - 120px); margin: 0 auto; object-fit: contain; }
+.prose .article-visual--expandable:target figcaption { color: #fff; }
+.prose .article-visual--expandable:target .article-image-zoom__close { position: absolute; top: 12px; right: 20px; display: block; color: #fff; font-size: 2rem; line-height: 1; text-decoration: none; }
+.prose .article-visual--expandable:target .article-image-zoom__original { display: block; color: #fff; font-size: .82rem; }
 
 .post-nav { margin-top: 78px; padding-top: 28px; border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 .post-nav a { display: flex; flex-direction: column; gap: 5px; text-decoration: none; }
