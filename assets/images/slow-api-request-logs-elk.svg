@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Slow API 알림에서 Trace ID로 로그 흐름을 읽는 로컬 ELK 검색 경로</title>
+  <desc id="desc">왼쪽의 Slow API 알림이 요청 완료 기록과 Trace ID 검색을 거쳐 오른쪽의 시간순 로그 흐름으로 연결된다.</desc>
+  <rect width="1600" height="900" fill="#f6f7f4"/>
+  <rect x="90" y="86" width="1420" height="728" rx="14" fill="#fff" stroke="#dce1dc" stroke-width="2"/>
+  <text x="152" y="168" fill="#626c65" font-family="Arial, sans-serif" font-size="27" font-weight="700" letter-spacing="4">ALERT TO REQUEST LOGS</text>
+  <line x1="152" y1="210" x2="1448" y2="210" stroke="#dde2dd" stroke-width="2"/>
+  <rect x="153" y="322" width="302" height="324" rx="12" fill="#f8ebe7" stroke="#d49a8e" stroke-width="3"/>
+  <rect x="185" y="360" width="238" height="42" rx="5" fill="#c5543d"/>
+  <text x="304" y="389" fill="#fff" font-family="Arial, sans-serif" font-size="23" font-weight="700" text-anchor="middle">SLOW API</text>
+  <text x="187" y="471" fill="#654740" font-family="Arial, sans-serif" font-size="26" font-weight="700">route</text>
+  <text x="187" y="520" fill="#654740" font-family="Arial, sans-serif" font-size="26" font-weight="700">time</text>
+  <text x="187" y="569" fill="#654740" font-family="Arial, sans-serif" font-size="26" font-weight="700">status</text>
+  <path d="M478 487 H570" fill="none" stroke="#68776c" stroke-width="7"/>
+  <path d="M551 469 L581 487 L551 505" fill="none" stroke="#68776c" stroke-width="7" stroke-linejoin="round"/>
+  <rect x="601" y="322" width="396" height="324" rx="12" fill="#eef4f0" stroke="#9eb5a4" stroke-width="3"/>
+  <text x="646" y="392" fill="#2c6043" font-family="Arial, sans-serif" font-size="25" font-weight="700">DISCOVER</text>
+  <line x1="646" y1="419" x2="952" y2="419" stroke="#adbdaf" stroke-width="2"/>
+  <g fill="#6f9d7d"><rect x="646" y="453" width="304" height="34" rx="4"/><rect x="646" y="504" width="304" height="34" rx="4"/><rect x="646" y="555" width="304" height="34" rx="4"/></g>
+  <rect x="646" y="504" width="304" height="34" rx="4" fill="#c5543d"/>
+  <text x="646" y="626" fill="#466a52" font-family="Arial, sans-serif" font-size="23" font-weight="700">trace.id</text>
+  <path d="M1018 487 H1089" fill="none" stroke="#68776c" stroke-width="7"/>
+  <path d="M1070 469 L1100 487 L1070 505" fill="none" stroke="#68776c" stroke-width="7" stroke-linejoin="round"/>
+  <rect x="1120" y="322" width="326" height="324" rx="12" fill="#eef2f5" stroke="#a7b7c4" stroke-width="3"/>
+  <text x="1155" y="392" fill="#3b5668" font-family="Arial, sans-serif" font-size="25" font-weight="700">TRACE LOGS</text>
+  <line x1="1155" y1="419" x2="1413" y2="419" stroke="#b4c3ce" stroke-width="2"/>
+  <g fill="#8ca9bd"><circle cx="1170" cy="467" r="10"/><circle cx="1170" cy="521" r="10"/><circle cx="1170" cy="575" r="10"/></g>
+  <path d="M1170 475 V565" fill="none" stroke="#8ca9bd" stroke-width="4"/>
+  <g fill="#658095"><rect x="1197" y="455" width="206" height="24" rx="3"/><rect x="1197" y="509" width="158" height="24" rx="3"/><rect x="1197" y="563" width="186" height="24" rx="3"/></g>
+  <text x="153" y="744" fill="#768078" font-family="Arial, sans-serif" font-size="24">METRIC SIGNAL</text>
+  <text x="694" y="744" fill="#768078" font-family="Arial, sans-serif" font-size="24">ONE REQUEST</text>
+  <text x="1178" y="744" fill="#768078" font-family="Arial, sans-serif" font-size="24">TIME ORDER</text>
+</svg>

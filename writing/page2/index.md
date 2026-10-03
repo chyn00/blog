@@ -6,6 +6,6 @@ permalink: /writing/page2/
 post_offset: 6
 page_number: 2
 total_pages: 2
-remaining_count: 3
+remaining_count: 5
 previous_page: /writing/
 ---
