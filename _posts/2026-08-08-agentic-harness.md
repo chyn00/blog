@@ -6,6 +6,7 @@ categories: [engineering]
 category_label: "Engineering"
 tags: [AI, Agent, Workflow]
 topics: [ai-engineering]
+home_rank: 2
 image: /assets/images/thumb-agentic-harness-realized.png
 mermaid: true
 toc_items:

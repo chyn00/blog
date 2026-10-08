@@ -7,7 +7,6 @@ category_label: "실무"
 tags: [Vue, Electron, 레거시 전환, 트랜잭션, 동시성, 변경 범위 통제]
 topics: [concurrency]
 featured_rank: 2
-home_rank: 2
 image: /assets/images/thumb-stock-consistency-realized.png
 mermaid: true
 toc_items:

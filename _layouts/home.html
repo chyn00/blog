@@ -13,12 +13,12 @@ layout: default
   <div class="section-heading">
     <div>
       <p class="eyebrow">Selected writing</p>
-      <h2 id="latest-posts">주요 글</h2>
+      <h2 id="latest-posts">대표 글</h2>
     </div>
   </div>
   {% assign home_posts = site.posts | where_exp: 'post', 'post.home_rank' | sort: 'home_rank' %}
   <div class="post-grid">
-    {% for post in home_posts limit: 4 %}
+    {% for post in home_posts limit: 2 %}
       {% assign card_loading = 'lazy' %}
       {% if forloop.index <= 3 %}{% assign card_loading = 'eager' %}{% endif %}
       {% include post-card.html post=post loading=card_loading %}

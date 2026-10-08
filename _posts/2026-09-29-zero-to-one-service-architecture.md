@@ -6,7 +6,7 @@ categories: [product]
 category_label: "0→1 실제 운영 서비스"
 tags: [Spring Boot, Docker, Jenkins, Prometheus, Grafana]
 topics: [service-design]
-home_rank: 3
+home_rank: 1
 image: /assets/images/zero-to-one-service-architecture.png
 permalink: /product/zero-to-one-service-architecture/
 toc_items:
